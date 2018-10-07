@@ -111,7 +111,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 0fc60d91b3b1d4c8abdb82411958a178, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -161,6 +161,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c05acefff3fd44ba9b6b40624dcd406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thing:
+    name: 
+    category: 
+    description: 
+    image: 
+  member:
+    name: 
+    subname: 
+    introduce: 
+    profile: 
   image: {fileID: 114437435034915768}
   objectName: {fileID: 114580969741377746}
 --- !u!222 &222057213076112902
@@ -237,6 +247,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1.8928146, y: 3.1762753}
+  m_AnchoredPosition: {x: 3.2589588, y: -3.2548387}
   m_SizeDelta: {x: 110, y: 133}
   m_Pivot: {x: 0.5, y: 0.5}
