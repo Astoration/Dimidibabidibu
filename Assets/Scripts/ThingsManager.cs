@@ -38,7 +38,7 @@ public class Thing
     {
         get
         {
-            var path = "things/200" + image;
+            var path = "things/200/" + image;
             if (thingDict.ContainsKey(path))
             {
                 return thingDict[path];
@@ -55,7 +55,7 @@ public class Thing
     {
         get
         {
-			var path = "things/900" + image;
+			var path = "things/900/" + image;
             if (thingDict.ContainsKey(path))
             {
                 return thingDict[path];
