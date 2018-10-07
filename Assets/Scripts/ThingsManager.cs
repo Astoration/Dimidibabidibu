@@ -75,8 +75,8 @@ public class ThingsManager : MonoBehaviour {
     List<GameObject> things;
     public TextAsset thingData;
     public TextAsset memberData;
-    public List<Thing> list = new List<Thing>();
-    public List<Member> members = new List<Member>();
+    public static List<Thing> list = new List<Thing>();
+    public static List<Member> members = new List<Member>();
     int index = 0;
     int amount = 0;
 
