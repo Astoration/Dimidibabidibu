@@ -38,8 +38,9 @@ GameObject:
   - component: {fileID: 224923148052161222}
   - component: {fileID: 222589672057016122}
   - component: {fileID: 114016971218926664}
+  - component: {fileID: 114957333912377652}
   m_Layer: 5
-  m_Name: Image
+  m_Name: IndexItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,6 +150,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\uAD18\uC885\uC2DC\uACC4"
+--- !u!114 &114957333912377652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172960168310260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c05acefff3fd44ba9b6b40624dcd406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 114437435034915768}
+  objectName: {fileID: 114580969741377746}
 --- !u!222 &222057213076112902
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -223,6 +237,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -66.5}
+  m_AnchoredPosition: {x: 1.8928146, y: 3.1762753}
   m_SizeDelta: {x: 110, y: 133}
   m_Pivot: {x: 0.5, y: 0.5}
