@@ -34,18 +34,36 @@ public class Thing
     public string category;
     public string description;
     public string image;
+    public Sprite Thumb
+    {
+        get
+        {
+            var path = "things/200" + image;
+            if (thingDict.ContainsKey(path))
+            {
+                return thingDict[path];
+            }
+            else
+            {
+                var sprite = Resources.Load<Sprite>(path);
+                thingDict.Add(path, sprite);
+                return sprite;
+            }
+        }
+    }
     public Sprite Image
     {
         get
         {
-            if (thingDict.ContainsKey(image))
+			var path = "things/900" + image;
+            if (thingDict.ContainsKey(path))
             {
-                return thingDict[image];
+                return thingDict[path];
             }
             else
             {
-                var sprite = Resources.Load<Sprite>("things/" + image);
-                thingDict.Add(image, sprite);
+                var sprite = Resources.Load<Sprite>(path);
+                thingDict.Add(path, sprite);
                 return sprite;
             }
         }

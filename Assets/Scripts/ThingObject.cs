@@ -16,14 +16,14 @@ public class ThingObject : MonoBehaviour {
 		
 	}
 
-    public void SetThing(Thing thing,Member member){
-        image.sprite = thing.Image;
+    public void SetThing(Thing thing,Member member,bool useThumb = true){
+        image.sprite =useThumb?thing.Thumb:thing.Image;
         objectName.text = thing.name + "으로 변한 <color=\"#f8e71c\">" + member.name + "</color>" ;
     }
 
-    public void SetThing(Thing thing)
+    public void SetThing(Thing thing,bool useThumb = true)
     {
-        image.sprite = thing.Image;
+        image.sprite = useThumb ? thing.Thumb : thing.Image;
         objectName.text = thing.name;
     }
 }
