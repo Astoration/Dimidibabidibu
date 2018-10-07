@@ -133,6 +133,7 @@ public class ThingsManager : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         ArchivePage.SetActive(true);
+        ArchivePage.GetComponent<ArchivePanel>().Init(item.GetComponent<ThingObject>().member);
         Camera.main.GetComponent<Camera>().orthographicSize = 5f;
         CameraMovable.enable = true;
         OnZoom.Invoke();

@@ -8391,6 +8391,7 @@ GameObject:
   - component: {fileID: 1073292603}
   - component: {fileID: 1073292605}
   - component: {fileID: 1073292604}
+  - component: {fileID: 1073292606}
   m_Layer: 5
   m_Name: ArchivePanel
   m_TagString: Untagged
@@ -8452,6 +8453,19 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1073292602}
   m_CullTransparentMesh: 0
+--- !u!114 &1073292606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1073292602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4047a00a4d802428a851091cfc3ed515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBox: {fileID: 271377771}
+  title: {fileID: 225627196}
 --- !u!1 &1113824749
 GameObject:
   m_ObjectHideFlags: 0
