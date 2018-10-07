@@ -41,6 +41,28 @@ public class SpeechManager : MonoBehaviour {
         }
     }
 
+    public void SaveResult(){
+        var date = DateTime.Now.ToString();
+        SavWav.Save(date, RecordManager.instance.source.clip);
+        var path = PlayerPrefs.GetString(selectedMember+"/sound", "");
+        if (!path.Equals(""))
+        {
+            path += date + ".wav";
+        }else{
+            path = date + ".wav" + "#" + path;
+        }
+        var thing = PlayerPrefs.GetString(selectedMember + "/thing", "");
+        if (!path.Equals(""))
+        {
+            thing += ThingsManager.list[SelectManager.instance.current].name;
+        }else{
+            thing = ThingsManager.list[SelectManager.instance.current].name + "#" + thing;
+        }
+        thing += ThingsManager.list[SelectManager.instance.current].name;
+        PlayerPrefs.SetString(selectedMember + "/sound", path);
+        PlayerPrefs.SetString(selectedMember + "/thing", thing);
+    }
+
     public void OnSuccess(RecognitionResponse response, long index){
         Debug.Log("3");
         if (response != null && response.results.Length > 0)
@@ -52,6 +74,8 @@ public class SpeechManager : MonoBehaviour {
                     finalPanel.SetActive(false);
                     isCommandMode = false;
                     ThingsManager.instance.ResetCamera();
+                    SaveResult();
+                    ThingsManager.instance.InitList();
                 }else{
                     finalPanel.GetComponentInChildren<Text>().text = "마음을 가다듬고 <color=\"#f8e71c\">다시한번</color> 시도해주세요!";
                     finalPanel.GetComponent<Animator>().Play("ReInitFinal");
