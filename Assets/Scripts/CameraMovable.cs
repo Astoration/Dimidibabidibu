@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovable : MonoBehaviour {
+    public static bool enable = true;
     public int direction;
     public Vector3 target;
     public float curve;
@@ -14,6 +15,7 @@ public class CameraMovable : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!enable) return;
         var distance = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
         if (0.95f < distance)
         {

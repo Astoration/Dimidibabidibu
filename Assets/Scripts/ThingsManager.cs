@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using LitJson;
 
 [System.Serializable]
@@ -71,12 +72,21 @@ public class Thing
 }
 
 public class ThingsManager : MonoBehaviour {
+    public static ThingsManager _instance;
+    public static ThingsManager instance{
+        get{
+            if (!_instance) _instance = (ThingsManager)FindObjectOfType(typeof(ThingsManager));
+            return _instance;
+        }
+    }
     public GameObject thing;
-    List<GameObject> things;
+    List<GameObject> things = new List<GameObject>();
     public TextAsset thingData;
     public TextAsset memberData;
     public static List<Thing> list = new List<Thing>();
     public static List<Member> members = new List<Member>();
+    public GameObject ArchivePage;
+    public UnityEvent OnZoom;
     int index = 0;
     int amount = 0;
 
@@ -100,6 +110,34 @@ public class ThingsManager : MonoBehaviour {
         }
     }
 
+    public void OpenByName(string name){
+        GameObject item = null;
+        foreach(var i in things){
+            if(i.GetComponent<ThingObject>().member.name==name){
+                Debug.Log(name);
+                item = i;
+            }
+        }
+        if (item == null) return;
+        StartCoroutine(ZoomItem(item));
+    }
+
+    IEnumerator ZoomItem(GameObject item){
+        CameraMovable.enable = false;
+        while(Vector2.Distance(Camera.main.transform.position,item.transform.position)>0.01f){
+            Camera.main.transform.position = Vector2.Lerp(Camera.main.transform.position, item.transform.position, 0.1f);
+            yield return new WaitForEndOfFrame();
+        }
+        while(1<Camera.main.GetComponent<Camera>().orthographicSize){
+            Camera.main.GetComponent<Camera>().orthographicSize = Mathf.Lerp(Camera.main.GetComponent<Camera>().orthographicSize, 0.8f, 0.1f);
+            yield return new WaitForEndOfFrame();
+        }
+        ArchivePage.SetActive(true);
+        Camera.main.GetComponent<Camera>().orthographicSize = 5f;
+        CameraMovable.enable = true;
+        OnZoom.Invoke();
+    }
+
     public void InitLine(int line, int count){
         float offset = line % 2 == 0 ? 0 : 0.5f;
         var start = (amount / 3f)/2f * -1;
@@ -112,6 +150,7 @@ public class ThingsManager : MonoBehaviour {
             var selectedThing = list[Random.Range(0, list.Count)];
             item.GetComponent<ThingObject>().SetThing(selectedThing,member);
             item.transform.localPosition = pos;
+            things.Add(item);
         }
 
     }

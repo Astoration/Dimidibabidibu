@@ -7,7 +7,9 @@ using FrostweepGames.Plugins.GoogleCloud.SpeechRecognition;
 public class SpeechManager : MonoBehaviour {
     GCSpeechRecognition speechRecognition;
     public GameObject guide, result;
+    public GameObject searchPanel;
     public Text resultText;
+    public string selectedMember;
 	// Use this for initialization
 	void Start () {
         speechRecognition = GCSpeechRecognition.Instance;
@@ -20,6 +22,7 @@ public class SpeechManager : MonoBehaviour {
         {
             var text = response.results[0].alternatives[0].transcript;
             resultText.text = "<color=\"#F8E71C\">" + text + "</color>가 맞나요?";
+            selectedMember = text;
             result.SetActive(true);
             guide.SetActive(false);
         }
@@ -30,11 +33,16 @@ public class SpeechManager : MonoBehaviour {
         guide.SetActive(true);
         OnStart();
     }
+
+    public void Confirm(){
+        searchPanel.SetActive(false);
+        ThingsManager.instance.OpenByName(selectedMember);
+    }
 	
     public void OnStart(){
         Debug.Log("1");
         speechRecognition.StartRecord(false);
-        Invoke("OnStop", 3f);
+        Invoke("OnStop", 5f);
     }
 
     public void OnStop(){
