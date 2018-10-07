@@ -145,7 +145,7 @@ public class ThingsManager : MonoBehaviour {
             Vector3 pos = new Vector3();
             Member member = members[index++];
             pos.x = (start + i + offset)*3;
-            pos.y = (line - 1)*3;
+            pos.y = (line - 1)*2;
             var item = Instantiate(thing,transform);
             var selectedThing = list[Random.Range(0, list.Count)];
             item.GetComponent<ThingObject>().SetThing(selectedThing,member);
