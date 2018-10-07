@@ -122,6 +122,27 @@ public class ThingsManager : MonoBehaviour {
         StartCoroutine(ZoomItem(item));
     }
 
+    public void LockByName(string name){
+        GameObject item = null;
+        foreach (var i in things)
+        {
+            if (i.GetComponent<ThingObject>().member.name == name)
+            {
+                Debug.Log(name);
+                item = i;
+            }
+        }
+        if (item == null) return;
+        Camera.main.transform.position = item.transform.position;
+        Camera.main.GetComponent<Camera>().orthographicSize = 1f;
+        CameraMovable.enable = false;
+    }
+
+    public void ResetCamera(){
+        Camera.main.GetComponent<Camera>().orthographicSize = 5f;
+        CameraMovable.enable = true;
+    }
+
     IEnumerator ZoomItem(GameObject item){
         CameraMovable.enable = false;
         while(Vector2.Distance(Camera.main.transform.position,item.transform.position)>0.01f){
