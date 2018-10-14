@@ -102,6 +102,8 @@ public class ThingsManager : MonoBehaviour {
 
     public void InitList(){
         index = 0;
+        foreach (var i in things) DestroyImmediate(i);
+        things.Clear();
         for (int i = 0; i < 3; i ++){
             int count = amount / 3;
             var type = i % 2 == 1;
@@ -169,11 +171,28 @@ public class ThingsManager : MonoBehaviour {
             pos.x = (start + i + offset)*3;
             pos.y = (line - 1)*2;
             var item = Instantiate(thing,transform);
-            var selectedThing = list[Random.Range(0, list.Count)];
+            var history = PlayerPrefs.GetString(member.name + "/thing", "");
+            var histories = history.Split('#');
+            Thing selectedThing = null;
+            if (histories != null && 0 < histories.Length && histories[0] != "")
+            {
+                selectedThing = SearchByName(histories[0]);
+            }
+            else
+            {
+                selectedThing = list[Random.Range(0, list.Count)];
+            }
             item.GetComponent<ThingObject>().SetThing(selectedThing,member);
             item.transform.localPosition = pos;
             things.Add(item);
         }
 
+    }
+
+    public Thing SearchByName(string name){
+        foreach(var thing in list){
+            if (thing.name == name) return thing;
+        }
+        return null;
     }
 }

@@ -21,7 +21,7 @@ public class ThingObject : MonoBehaviour {
     public void SetThing(Thing thing,Member member,bool useThumb = true, bool useCategory = false){
         this.thing = thing;
         this.member = member;
-        image.sprite =useThumb?thing.Thumb:thing.Image;
+        image.sprite = useThumb?thing.Thumb:thing.Image;
         objectName.text = useCategory?thing.category:thing.name + "으로 변한 <color=\"#f8e71c\">" + member.name + "</color>" ;
     }
 

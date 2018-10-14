@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CameraMovable : MonoBehaviour {
     public static bool enable = true;
-    public int direction;
-    public Vector3 target;
+    public float direction = 0f;
+    public float speed = 3f;
     public float curve;
+    public float accel = 1f;
+    public float max = 3f;
+    float timer = 0f;
 
     // Use this for initialization
     void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -27,25 +30,27 @@ public class CameraMovable : MonoBehaviour {
         }
         else
         {
-            direction = 0;
+            if(direction < 0){
+                direction = Mathf.Clamp(direction += Time.deltaTime, -99, 0);
+            }else if(distance > 0){
+                direction = Mathf.Clamp(direction -= Time.deltaTime, 0, 99);
+            }
+            accel = Mathf.Clamp(accel * 0.01f,1f,100);
+            max = Mathf.Clamp(max * 0.01f,3f,100);
+            timer = 0f;
         }
-
-        if(Vector3.Distance(transform.position,target)<0.05){
-            curve = 0.95f;
-            target.x += direction * 10;
-            target.x = Mathf.Clamp(target.x, -37, 37);
-        }else if (Vector3.Distance(transform.position, target) < 1){
-            curve = 0.4f;
-            target.x += direction * 10;
-            target.x = Mathf.Clamp(target.x, -37, 37);
-        }
-        else
-        {
-            if (0.4f<curve)
-            {
-                curve -= Time.deltaTime;
+        var pos = transform.position;
+        accel += Time.deltaTime * 2;
+        accel = Mathf.Clamp(accel, 1f, max);
+        if(3f<=accel){
+            timer += Time.deltaTime;
+            if(3f<=timer){
+                max = 6f;
             }
         }
-        transform.position = Vector3.Lerp(transform.position,target, (1 - curve)/2f);
+        Debug.Log(accel);
+        pos.x += direction * Time.deltaTime * speed * accel;
+        pos.x = Mathf.Clamp(pos.x, -37f, 37f);
+        transform.position = pos;
     }
 }

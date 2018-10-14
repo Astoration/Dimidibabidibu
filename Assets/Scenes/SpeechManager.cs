@@ -47,18 +47,17 @@ public class SpeechManager : MonoBehaviour {
         var path = PlayerPrefs.GetString(selectedMember+"/sound", "");
         if (!path.Equals(""))
         {
-            path += date + ".wav";
-        }else{
             path = date + ".wav" + "#" + path;
+        }else{
+            path += date + ".wav";
         }
         var thing = PlayerPrefs.GetString(selectedMember + "/thing", "");
-        if (!path.Equals(""))
+        if (!thing.Equals(""))
         {
-            thing += ThingsManager.list[SelectManager.instance.current].name;
-        }else{
             thing = ThingsManager.list[SelectManager.instance.current].name + "#" + thing;
+        }else{
+            thing += ThingsManager.list[SelectManager.instance.current].name;
         }
-        thing += ThingsManager.list[SelectManager.instance.current].name;
         PlayerPrefs.SetString(selectedMember + "/sound", path);
         PlayerPrefs.SetString(selectedMember + "/thing", thing);
     }
@@ -69,7 +68,7 @@ public class SpeechManager : MonoBehaviour {
         {
             var text = response.results[0].alternatives[0].transcript;
             if(isCommandMode){
-                if(text == "디미디바비디부"||text== "비비디바비디부")
+                if(text.Contains("바비디"))
                 {
                     finalPanel.SetActive(false);
                     isCommandMode = false;

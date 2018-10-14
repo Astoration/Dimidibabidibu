@@ -4,8 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class RecordManager : MonoBehaviour {
+    public static RecordManager _instance;
+    public static RecordManager instance
+    {
+        get
+        {
+            if (!_instance) _instance = (RecordManager)FindObjectOfType(typeof(RecordManager));
+            return _instance;
+        }
+    }
     public Image progress;
-    AudioSource source;
+    public AudioSource source;
     private bool isPlaying;
 
     // Use this for initialization

@@ -10,7 +10,15 @@ public class SelectManager : MonoBehaviour {
     public RectTransform currentObject, preObject;
     public List<GameObject> indexObjects = new List<GameObject>();
     public int current = 0;
-
+    public static SelectManager _instance;
+    public static SelectManager instance
+    {
+        get
+        {
+            if (!_instance) _instance = (SelectManager)FindObjectOfType(typeof(SelectManager));
+            return _instance;
+        }
+    }
     private void Awake()
     {
         Debug.Log(ThingsManager.list);
