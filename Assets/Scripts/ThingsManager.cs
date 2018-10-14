@@ -167,7 +167,8 @@ public class ThingsManager : MonoBehaviour {
         var start = (amount / 3f)/2f * -1;
         for (int i = 0; i < count;i++){
             Vector3 pos = new Vector3();
-            Member member = members[index++];
+            index = i * 3 + line;
+            Member member = members[index];
             pos.x = (start + i + offset)*3;
             pos.y = (line - 1)*2;
             var item = Instantiate(thing,transform);
