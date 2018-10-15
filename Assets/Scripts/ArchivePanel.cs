@@ -14,6 +14,7 @@ public class ArchivePanel : MonoBehaviour {
         }
     }
     public Text textBox;
+    public Text productTitle;
     public Text title;
     public Text historyText;
     public Image image;
@@ -30,6 +31,7 @@ public class ArchivePanel : MonoBehaviour {
     {
         image.sprite = member.Image;
         textBox.text = member.name;
+        productTitle.text = member.title;
         title.text = string.Format("지금까지 {0}에게 남겨진\n"
                                    + "마법 메시지를 재생 해볼까요 ? ", member.name);
         var history = PlayerPrefs.GetString(member.name + "/thing", "");

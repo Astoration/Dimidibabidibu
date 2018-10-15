@@ -10,6 +10,7 @@ public class Member{
     public string name;
     public string introduce;
     public string profile;
+    public string title;
     public Sprite Image{
         get{
             if (memberDict.ContainsKey(profile))
