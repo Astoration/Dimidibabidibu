@@ -167,7 +167,6 @@ public class ThingsManager : MonoBehaviour {
         for (int i = 0; i < count;i++){
             Vector3 pos = new Vector3();
             index = i * 3 + line;
-            Debug.Log(index+"/"+members.Count);
             Member member = members[index];
             pos.x = (start + i + offset)*3;
             pos.y = -((line - 1)*2);
