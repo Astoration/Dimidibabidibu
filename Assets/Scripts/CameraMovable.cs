@@ -48,7 +48,6 @@ public class CameraMovable : MonoBehaviour {
                 max = 6f;
             }
         }
-        Debug.Log(accel);
         pos.x += direction * Time.deltaTime * speed * accel;
         pos.x = Mathf.Clamp(pos.x, -37f, 37f);
         transform.position = pos;

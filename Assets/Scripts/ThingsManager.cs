@@ -8,7 +8,6 @@ using LitJson;
 public class Member{
     public static Dictionary<string, Sprite> memberDict = new Dictionary<string, Sprite>();
     public string name;
-    public string subname;
     public string introduce;
     public string profile;
     public Sprite Image{
@@ -106,8 +105,7 @@ public class ThingsManager : MonoBehaviour {
         things.Clear();
         for (int i = 0; i < 3; i ++){
             int count = amount / 3;
-            var type = i % 2 == 1;
-            if (type) count += amount % 3;
+            count += (i + 1) <= (amount % 3) ? 1:0;
             InitLine(i,count);
         }
     }
@@ -168,9 +166,10 @@ public class ThingsManager : MonoBehaviour {
         for (int i = 0; i < count;i++){
             Vector3 pos = new Vector3();
             index = i * 3 + line;
+            Debug.Log(index+"/"+members.Count);
             Member member = members[index];
             pos.x = (start + i + offset)*3;
-            pos.y = (line - 1)*2;
+            pos.y = -((line - 1)*2);
             var item = Instantiate(thing,transform);
             var history = PlayerPrefs.GetString(member.name + "/thing", "");
             var histories = history.Split('#');

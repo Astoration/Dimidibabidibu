@@ -15,6 +15,8 @@ public class ArchivePanel : MonoBehaviour {
     }
     public Text textBox;
     public Text title;
+    public Text historyText;
+    public Image image;
     public GameObject firstCell, cell, addCell,viewport;
     public List<Thing> thingHistories;
     public List<string> audioHistories;
@@ -26,7 +28,8 @@ public class ArchivePanel : MonoBehaviour {
 
     public void Init(Member member)
     {
-        textBox.text = string.Format("안녕하세요, {0}입니다.",member.name);
+        image.sprite = member.Image;
+        textBox.text = member.name;
         title.text = string.Format("지금까지 {0}에게 남겨진\n"
                                    + "마법 메시지를 재생 해볼까요 ? ", member.name);
         var history = PlayerPrefs.GetString(member.name + "/thing", "");
@@ -36,9 +39,16 @@ public class ArchivePanel : MonoBehaviour {
         viewport.GetComponent<MagneticScrollView.MagneticScrollRect>().ArrangeElements();
         if (histories != null && 0 < histories.Length && histories[0] != "")
         {
+            bool isFisrt = true;
             foreach (var item in histories)
             {
-                selectedThing = ThingsManager.instance.SearchByName(histories[0]);
+
+                selectedThing = ThingsManager.instance.SearchByName(item);
+                if (isFisrt)
+                {
+                    historyText.text = string.Format("저는 현재 \"{0}\"(으)로 변해있어요.",selectedThing.name);
+                    isFisrt = false;
+                }
                 thingHistories.Add(selectedThing);
             }
         }
