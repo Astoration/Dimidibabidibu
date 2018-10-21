@@ -10,7 +10,7 @@ public class DetailPage : MonoBehaviour {
         title.text = string.Format("{0}이(가) 되는 마법", thing.name);
         image.GetComponent<SpriteAnimation>().thing = thing.image;
         image.GetComponent<SpriteAnimation>().size = 900;
-        description.text = thing.description;
+        description.text = thing.description.Replace(@"{0}",ThingsManager.instance.selectedMember.name);
     }
 
     static public GameObject GameObjectHardFind(string str)

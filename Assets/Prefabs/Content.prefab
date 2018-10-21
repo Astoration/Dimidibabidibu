@@ -211,6 +211,7 @@ MonoBehaviour:
   thing: 0
   size: 200
   duration: 3
+  isThing: 1
   time: 0
 --- !u!114 &114288824140545402
 MonoBehaviour:
@@ -259,7 +260,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 16a5ecbd2d5bf4e079529d6cccadb40e, type: 3}
+    m_Font: {fileID: 12800000, guid: 1dd25b415741c4457ab7afc238cf5b76, type: 3}
     m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
@@ -347,7 +348,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 16a5ecbd2d5bf4e079529d6cccadb40e, type: 3}
+    m_Font: {fileID: 12800000, guid: 844d3e4dd1fc44f7eb50dd937efe08c3, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
@@ -450,7 +451,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 16a5ecbd2d5bf4e079529d6cccadb40e, type: 3}
+    m_Font: {fileID: 12800000, guid: 844d3e4dd1fc44f7eb50dd937efe08c3, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
@@ -462,11 +463,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC5B4\uCA4C\uAD6C \uC800\uCA4C\uAD6C \uC5B4\uCA4C\uAD6C \uC800\uCA4C\uAD6C
-    \uC5B4\uCA4C\uAD6C \uC800\uCA4C\uAD6C \uC5B4\uCA4C\uAD6C \uC800\uCA4C\uAD6C \uC5B4\uCA4C\uAD6C
-    \uC800\uCA4C\uAD6C \uC5B4\uCA4C\uAD6C \uC800\uCA4C\uAD6C \uC5B4\uCA4C\uAD6C \uC800\uCA4C\uAD6C
-    \uC5B4\uCA4C\uAD6C \uC800\uCA4C\uAD6C \uC5B4\uCA4C\uAD6C \uC800\uCA4C\uAD6C \uC5B4\uCA4C\uAD6C
-    \uC800\uCA4C\uAD6C "
+  m_Text: "\uC5BC\uC74C\uC774 \uACE7 \uACE0\uB3D9\uC744 \uBB34\uC5C7\uC774 \uBD88\uB7EC
+    \uB4E3\uB294\uB2E4. \uC7A5\uC2DD\uD558\uB294 \uB418\uB824\uB2C8\uC640, \uC774\uC0C1\uC740
+    \uC2F6\uC774 \uB178\uB798\uD558\uBA70 \uC704\uD558\uC5EC\uC11C. \uC8FC\uBA70,
+    \uBD88\uC5B4 \uC55E\uC774 \uBB47 \uAC83\uC774\uB2E4.\n"
 --- !u!114 &114850600264904650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -487,7 +487,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 16a5ecbd2d5bf4e079529d6cccadb40e, type: 3}
+    m_Font: {fileID: 12800000, guid: 844d3e4dd1fc44f7eb50dd937efe08c3, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0

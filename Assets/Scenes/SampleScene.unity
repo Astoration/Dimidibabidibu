@@ -1159,6 +1159,7 @@ MonoBehaviour:
   result: {fileID: 860078043}
   searchPanel: {fileID: 310524027}
   resultText: {fileID: 692043042}
+  finalText: {fileID: 2119559163}
   selectedMember: 
   finalPanel: {fileID: 1104700427}
   FailedResult: {fileID: 826055818}
@@ -1417,6 +1418,11 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  selectedMember:
+    name: 
+    introduce: 
+    profile: 
+    title: 
 --- !u!4 &368311114
 Transform:
   m_ObjectHideFlags: 0
@@ -2257,7 +2263,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 012024058f6e242178f926a4a0092228, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7562,6 +7568,7 @@ GameObject:
   - component: {fileID: 690614753}
   - component: {fileID: 690614752}
   - component: {fileID: 690614754}
+  - component: {fileID: 690614755}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -7632,6 +7639,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3febaba439ad74e1293cd8eff094165b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storyIntroduce: {fileID: 1902628054}
+--- !u!114 &690614755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 690614750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6816cf0dd4abd44e780afe8a7e0f4dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loopFrame: 1
+  frame: 0
+  thing: 0
+  size: 900
+  duration: 3
+  isThing: 1
+  time: 0
 --- !u!1 &692043040
 GameObject:
   m_ObjectHideFlags: 0
@@ -8643,6 +8669,7 @@ GameObject:
   - component: {fileID: 942953304}
   - component: {fileID: 942953303}
   - component: {fileID: 942953305}
+  - component: {fileID: 942953306}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -8666,7 +8693,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -107}
-  m_SizeDelta: {x: 0, y: 46}
+  m_SizeDelta: {x: 0, y: 227.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &942953303
 MonoBehaviour:
@@ -8688,13 +8715,13 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 844d3e4dd1fc44f7eb50dd937efe08c3, type: 3}
-    m_FontSize: 36
+    m_Font: {fileID: 12800000, guid: 1dd25b415741c4457ab7afc238cf5b76, type: 3}
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
-    m_Alignment: 1
+    m_MinSize: 0
+    m_MaxSize: 42
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -8720,6 +8747,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spacing: 3
+--- !u!114 &942953306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 942953301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257a3ed2e90fa4c6a95ab5b66aef3bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &985551794
 GameObject:
   m_ObjectHideFlags: 0
@@ -10487,8 +10525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5.5997314}
-  m_SizeDelta: {x: 0, y: -277.19955}
+  m_AnchoredPosition: {x: 0, y: 67.345}
+  m_SizeDelta: {x: 0, y: -400.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1399101088
 MonoBehaviour:

@@ -9,7 +9,7 @@ public class SpeechManager : MonoBehaviour {
     GCSpeechRecognition speechRecognition;
     public GameObject guide, result;
     public GameObject searchPanel;
-    public Text resultText;
+    public Text resultText, finalText;
     public string selectedMember;
     bool isCommandMode = false;
     public GameObject finalPanel, FailedResult;
@@ -71,6 +71,7 @@ public class SpeechManager : MonoBehaviour {
                 {
                     finalPanel.SetActive(false);
                     isCommandMode = false;
+                    CameraMovable.enable = true;
                     ThingsManager.instance.ResetCamera();
                     SaveResult();
                     ThingsManager.instance.InitList();
@@ -111,6 +112,8 @@ public class SpeechManager : MonoBehaviour {
     public void StartCommand(){
         isCommandMode = true;
         ThingsManager.instance.LockByName(selectedMember);
+        CameraMovable.enable = false;
+        finalText.text = selectedMember + "(을)를 조준하고 <color=\"#f8e71c\">디미디바비디부</color>를 외쳐주세요!";
         OnStart();
     }
     public void OnStart(){

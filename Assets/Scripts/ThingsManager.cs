@@ -55,6 +55,7 @@ public class ThingsManager : MonoBehaviour {
     public UnityEvent OnZoom;
     int index = 0;
     int amount = 0;
+    public Member selectedMember;
 
     public void Awake()
     {
@@ -86,6 +87,7 @@ public class ThingsManager : MonoBehaviour {
             }
         }
         if (item == null) return;
+        selectedMember = item.GetComponent<ThingObject>().member;
         StartCoroutine(ZoomItem(item));
     }
 
@@ -100,9 +102,9 @@ public class ThingsManager : MonoBehaviour {
             }
         }
         if (item == null) return;
-        Camera.main.transform.position = item.transform.position;
-        Camera.main.GetComponent<Camera>().orthographicSize = 1f;
         CameraMovable.enable = false;
+        Camera.main.transform.position = item.transform.position;
+        Camera.main.GetComponent<Camera>().orthographicSize = 3f;
     }
 
     public void ResetCamera(){
@@ -117,6 +119,7 @@ public class ThingsManager : MonoBehaviour {
             var pos = Camera.main.transform.position;
             pos.x = Mathf.Lerp(pos.x, item.transform.position.x, Time.deltaTime);
             Camera.main.transform.position = pos;
+            distance = Mathf.Abs(item.transform.position.x - Camera.main.transform.position.x);
             yield return new WaitForEndOfFrame();
         }
         item.GetComponent<Animator>().Play("BounceAnimation");
