@@ -30,45 +30,10 @@ public class Member{
 [System.Serializable]
 public class Thing
 {
-    public static Dictionary<string, Sprite> thingDict = new Dictionary<string, Sprite>();
     public string name;
     public string category;
     public string description;
     public string image;
-    public Sprite Thumb
-    {
-        get
-        {
-            var path = "things/200/" + image;
-            if (thingDict.ContainsKey(path))
-            {
-                return thingDict[path];
-            }
-            else
-            {
-                var sprite = Resources.Load<Sprite>(path);
-                thingDict.Add(path, sprite);
-                return sprite;
-            }
-        }
-    }
-    public Sprite Image
-    {
-        get
-        {
-			var path = "things/900/" + image;
-            if (thingDict.ContainsKey(path))
-            {
-                return thingDict[path];
-            }
-            else
-            {
-                var sprite = Resources.Load<Sprite>(path);
-                thingDict.Add(path, sprite);
-                return sprite;
-            }
-        }
-    }
 }
 
 public class ThingsManager : MonoBehaviour {
@@ -182,7 +147,8 @@ public class ThingsManager : MonoBehaviour {
             {
                 selectedThing = list[Random.Range(0, list.Count)];
             }
-            item.GetComponent<ThingObject>().SetThing(selectedThing,member);
+            item.GetComponent<ThingObject>().SetThing(selectedThing, member);
+            item.GetComponentInChildren<SpriteAnimation>().frame = Random.Range(0, 100);
             item.transform.localPosition = pos;
             things.Add(item);
         }

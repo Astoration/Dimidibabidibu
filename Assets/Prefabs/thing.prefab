@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 224548981244376682}
   - component: {fileID: 222644570381032664}
   - component: {fileID: 114593570690559678}
+  - component: {fileID: 114800869044360958}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -88,6 +89,7 @@ GameObject:
   - component: {fileID: 224181889676697586}
   - component: {fileID: 222619231549626570}
   - component: {fileID: 114857580360506112}
+  - component: {fileID: 114861501269396704}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -102,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1402937521139916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.454287, y: -6.373759, z: 0}
+  m_LocalPosition: {x: -5.8128753, y: 0.84498334, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224038002759085530}
@@ -173,6 +175,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114800869044360958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393669175936320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6816cf0dd4abd44e780afe8a7e0f4dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loopFrame: 1
+  frame: 0
+  thing: 0
+  size: 200
+  duration: 3
+  time: 0
 --- !u!114 &114857580360506112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,9 +223,21 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 1.2
   m_Text: "\uC5B4\uB514\uB860\uAC00 \uB5A0\uB0A0 \uD638\uBC15\uB9C8\uCC28\uB85C \uBCC0\uD55C
     <color=\"#f8e71c\">\uC8FC\uD611</color>"
+--- !u!114 &114861501269396704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1985882465011330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f278494370a4b487d92c784b713497c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_spacing: 1.6
 --- !u!114 &114934217071739444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,9 +256,9 @@ MonoBehaviour:
     image: 
   member:
     name: 
-    subname: 
     introduce: 
     profile: 
+    title: 
   image: {fileID: 114593570690559678}
   objectName: {fileID: 114857580360506112}
 --- !u!222 &222553641915913564
@@ -306,8 +337,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 52}
+  m_AnchoredPosition: {x: 0, y: -11.61}
+  m_SizeDelta: {x: 0, y: 64.41}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &224519061021192188
 RectTransform:

@@ -29,7 +29,6 @@ public class SpeechManager : MonoBehaviour {
 
     private void OnFailed()
     {
-        Debug.Log("4");
         if (isCommandMode){
             finalPanel.GetComponentInChildren<Text>().text = "마음을 가다듬고 <color=\"#f8e71c\">다시한번</color> 시도해주세요!";
             finalPanel.GetComponent<Animator>().Play("ReInitFinal");

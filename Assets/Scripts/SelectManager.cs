@@ -10,6 +10,7 @@ public class SelectManager : MonoBehaviour {
     public RectTransform currentObject, preObject;
     public List<GameObject> indexObjects = new List<GameObject>();
     public int current = 0;
+    public UnityEngine.Events.UnityEvent events;
     public static SelectManager _instance;
     public static SelectManager instance
     {
@@ -22,18 +23,25 @@ public class SelectManager : MonoBehaviour {
     private void Awake()
     {
         Debug.Log(ThingsManager.list);
-
+        int count = 0;
         foreach (var thing in ThingsManager.list){
             var content = Instantiate(contentItem, viewport.transform).GetComponent<DetailPage>();
             content.SetDetailPage(thing);
             var index = Instantiate(indexItem, indexList.transform);
-            index.GetComponent<ThingObject>().SetThing(thing, true, true);
+            index.GetComponent<ThingObject>().SetThing(thing, true,true);
+            index.GetComponent<IndexItem>().index = count++;
+            index.GetComponent<IndexItem>().scroll = GetComponent<MagneticScrollRect>();
             indexObjects.Add(index);
         }
         var pos = indexDot.GetComponent<RectTransform>().anchoredPosition;
         pos.x = Camera.allCameras[1].WorldToScreenPoint(indexObjects[current].GetComponent<RectTransform>().position).x;
         indexDot.GetComponent<RectTransform>().anchoredPosition = pos;
         currentObject = indexObjects[current].GetComponent<ThingObject>().image.rectTransform;
+    }
+
+    public void OnNext()
+    {
+        events.Invoke();
     }
 
     public void SetCurrent(GameObject index){

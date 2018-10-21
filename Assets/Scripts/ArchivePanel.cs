@@ -16,7 +16,7 @@ public class ArchivePanel : MonoBehaviour {
     public Text textBox;
     public Text productTitle;
     public Text title;
-    public Text historyText;
+    public Text introduce;
     public Image image;
     public GameObject firstCell, cell, addCell,viewport;
     public List<Thing> thingHistories;
@@ -31,6 +31,7 @@ public class ArchivePanel : MonoBehaviour {
     {
         image.sprite = member.Image;
         textBox.text = member.name;
+        introduce.text = member.introduce;
         productTitle.text = member.title;
         title.text = string.Format("지금까지 {0}에게 남겨진\n"
                                    + "마법 메시지를 재생 해볼까요 ? ", member.name);
@@ -41,16 +42,10 @@ public class ArchivePanel : MonoBehaviour {
         viewport.GetComponent<MagneticScrollView.MagneticScrollRect>().ArrangeElements();
         if (histories != null && 0 < histories.Length && histories[0] != "")
         {
-            bool isFisrt = true;
             foreach (var item in histories)
             {
 
                 selectedThing = ThingsManager.instance.SearchByName(item);
-                if (isFisrt)
-                {
-                    historyText.text = string.Format("저는 현재 \"{0}\"(으)로 변해있어요.",selectedThing.name);
-                    isFisrt = false;
-                }
                 thingHistories.Add(selectedThing);
             }
         }
@@ -66,15 +61,13 @@ public class ArchivePanel : MonoBehaviour {
         int index = 0;
         foreach(Thing thing in thingHistories){
             if(index == 0){
-                Instantiate(firstCell, viewport.transform).GetComponent<CellObject>().Init(thing,audioHistories[index]);
+                Instantiate(firstCell, viewport.transform).GetComponent<CellObject>().Init(member,thing,audioHistories[index]);
                 index += 1;
             }else{
-                Instantiate(cell, viewport.transform).GetComponent<CellObject>().Init(thing, audioHistories[index]);
+                Instantiate(cell, viewport.transform).GetComponent<CellObject>().Init(member,thing, audioHistories[index]);
                 index += 1;
             }
         }
-        var add = Instantiate(addCell, viewport.transform);
-        add.transform.SetSiblingIndex(Mathf.Clamp(index, 0, 5));
         viewport.GetComponent<MagneticScrollView.MagneticScrollRect>().ArrangeElements();
     }
 }

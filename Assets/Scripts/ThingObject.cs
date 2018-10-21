@@ -18,17 +18,25 @@ public class ThingObject : MonoBehaviour {
 		
 	}
 
-    public void SetThing(Thing thing,Member member,bool useThumb = true, bool useCategory = false){
+    public void SetThing(Thing thing, Member member, bool useCategory = false)
+    {
         this.thing = thing;
         this.member = member;
-        image.sprite = useThumb?thing.Thumb:thing.Image;
+        image.GetComponent<SpriteAnimation>().thing = thing.image;
         objectName.text = useCategory?thing.category:thing.name + "으로 변한 <color=\"#f8e71c\">" + member.name + "</color>" ;
     }
 
-    public void SetThing(Thing thing,bool useThumb = true,bool useCategory = false)
+    public void SetThing(Thing thing, bool useCategory = false,bool useStatic = false)
     {
         this.thing = thing;
-        image.sprite = useThumb ? thing.Thumb : thing.Image;
+        if (useStatic)
+        {
+            image.sprite = Resources.Load<Sprite>("things/" + thing.image + "/200/00000");
+        }
+        else
+        {
+            image.GetComponent<SpriteAnimation>().thing = thing.image;
+        }
         objectName.text = useCategory ? thing.category : thing.name;
     }
 }
