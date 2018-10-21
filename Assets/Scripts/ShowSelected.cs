@@ -7,6 +7,7 @@ public class ShowSelected : MonoBehaviour {
 
     private void OnEnable()
     {
-//        GetComponent<Image>().sprite = ThingsManager.list[SelectManager.instance.current].Image;
+        GetComponent<SpriteAnimation>().size = 900;
+        GetComponent<SpriteAnimation>().thing = ThingsManager.list[SelectManager.instance.current].image;
     }
 }

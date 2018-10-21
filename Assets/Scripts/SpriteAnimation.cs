@@ -9,6 +9,7 @@ public class SpriteAnimation : MonoBehaviour {
     public string thing = "0";
     public int size = 200;
     public float duration = 3f;
+    public bool isThing = true;
     public float framePer{
         get { return duration / sprites.Count; }
     }
@@ -19,9 +20,15 @@ public class SpriteAnimation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         image = GetComponent<Image>();
+        string rootPath = "";
+        if(isThing){
+            rootPath = "things/" + thing + "/" + size + "/";
+        }else{
+            rootPath = thing + "/";
+        }
         int loadFrame = 0;
-        while(Resources.Load<Sprite>("things/"+ thing +"/"+size+"/"+loadFrame.ToString("D5"))!=null){
-            Sprite i = Resources.Load<Sprite>("things/" + thing + "/" + size + "/" + loadFrame.ToString("D5"));
+        while(Resources.Load<Sprite>(rootPath+loadFrame.ToString("D5"))!=null){
+            Sprite i = Resources.Load<Sprite>(rootPath + loadFrame.ToString("D5"));
             sprites.Add(i);
             loadFrame += 1;
         }

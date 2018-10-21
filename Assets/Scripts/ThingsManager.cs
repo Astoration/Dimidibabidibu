@@ -20,6 +20,7 @@ public class Member{
             else
             {
                 var sprite = Resources.Load<Sprite>("members/" + profile);
+                if (sprite == null) Debug.Log(name);
                 memberDict.Add(profile, sprite);
                 return sprite;
             }
@@ -111,14 +112,15 @@ public class ThingsManager : MonoBehaviour {
 
     IEnumerator ZoomItem(GameObject item){
         CameraMovable.enable = false;
-        while(Vector2.Distance(Camera.main.transform.position,item.transform.position)>0.01f){
-            Camera.main.transform.position = Vector2.Lerp(Camera.main.transform.position, item.transform.position, 0.1f);
+        var distance = Mathf.Abs(item.transform.position.x - Camera.main.transform.position.x);
+        while(distance>0.01f){
+            var pos = Camera.main.transform.position;
+            pos.x = Mathf.Lerp(pos.x, item.transform.position.x, Time.deltaTime);
+            Camera.main.transform.position = pos;
             yield return new WaitForEndOfFrame();
         }
-        while(1<Camera.main.GetComponent<Camera>().orthographicSize){
-            Camera.main.GetComponent<Camera>().orthographicSize = Mathf.Lerp(Camera.main.GetComponent<Camera>().orthographicSize, 0.8f, 0.1f);
-            yield return new WaitForEndOfFrame();
-        }
+        item.GetComponent<Animator>().Play("BounceAnimation");
+        yield return new WaitForSeconds(1.4f);
         ArchivePage.SetActive(true);
         ArchivePage.GetComponent<ArchivePanel>().Init(item.GetComponent<ThingObject>().member);
         Camera.main.GetComponent<Camera>().orthographicSize = 5f;
@@ -147,6 +149,8 @@ public class ThingsManager : MonoBehaviour {
             {
                 selectedThing = list[Random.Range(0, list.Count)];
             }
+            var image = member.Image;
+            item.GetComponentInChildren<ItemSelector>().member = member;
             item.GetComponent<ThingObject>().SetThing(selectedThing, member);
             item.GetComponentInChildren<SpriteAnimation>().frame = Random.Range(0, 100);
             item.transform.localPosition = pos;

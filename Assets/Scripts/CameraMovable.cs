@@ -40,6 +40,7 @@ public class CameraMovable : MonoBehaviour {
             timer = 0f;
         }
         var pos = transform.position;
+        pos.y = 0;
         accel += Time.deltaTime * 2;
         accel = Mathf.Clamp(accel, 1f, max);
         if(3f<=accel){
