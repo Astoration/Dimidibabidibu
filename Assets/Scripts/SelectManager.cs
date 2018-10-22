@@ -9,6 +9,7 @@ public class SelectManager : MonoBehaviour {
     public GameObject indexDot;
     public RectTransform currentObject, preObject;
     public List<GameObject> indexObjects = new List<GameObject>();
+    public VideoController video;
     public int current = 0;
     public UnityEngine.Events.UnityEvent events;
     public static SelectManager _instance;
@@ -48,6 +49,7 @@ public class SelectManager : MonoBehaviour {
         current = GetComponent<MagneticScrollRect>().CurrentSelectedIndex;
         preObject = currentObject;
         currentObject = indexObjects[current].GetComponent<ThingObject>().image.rectTransform;
+        video.Play();
     }
 
     // Update is called once per frame

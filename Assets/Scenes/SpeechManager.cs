@@ -10,7 +10,7 @@ public class SpeechManager : MonoBehaviour {
     public GameObject guide, result;
     public GameObject searchPanel;
     public Text resultText, finalText;
-    public string selectedMember;
+    public static string selectedMember;
     bool isCommandMode = false;
     public GameObject finalPanel, FailedResult;
 	// Use this for initialization

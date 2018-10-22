@@ -14,6 +14,8 @@ public class RecordManager : MonoBehaviour {
         }
     }
     public Image progress;
+    public Text progressCount;
+    public string stringSource;
     public AudioSource source;
     private bool isPlaying;
 
@@ -24,8 +26,11 @@ public class RecordManager : MonoBehaviour {
 
     private void Update()
     {
-        if(source.isPlaying)
+        progressCount.text = string.Format(stringSource, (int)Mathf.Floor(15f - source.time));
+        if (source.isPlaying)
+        {
             progress.fillAmount = source.time / 15f;
+        }
     }
 
     public void Record(){

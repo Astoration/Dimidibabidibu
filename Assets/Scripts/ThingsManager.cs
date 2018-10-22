@@ -20,7 +20,6 @@ public class Member{
             else
             {
                 var sprite = Resources.Load<Sprite>("members/" + profile);
-                if (sprite == null) Debug.Log(name);
                 memberDict.Add(profile, sprite);
                 return sprite;
             }
@@ -35,6 +34,7 @@ public class Thing
     public string category;
     public string description;
     public string image;
+    public string caption;
 }
 
 public class ThingsManager : MonoBehaviour {
@@ -87,6 +87,7 @@ public class ThingsManager : MonoBehaviour {
             }
         }
         if (item == null) return;
+        SpeechManager.selectedMember = name;
         selectedMember = item.GetComponent<ThingObject>().member;
         StartCoroutine(ZoomItem(item));
     }

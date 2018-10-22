@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class CellObject : MonoBehaviour {
     public Image image;
     public Text title;
+    public Image progress;
+    AudioSource source;
 
     public void Record(){
         ArchivePanel.instance.OnRecord();
@@ -16,6 +18,12 @@ public class CellObject : MonoBehaviour {
         image.GetComponent<SpriteAnimation>().size = 900;
         title.text = string.Format("{0}는 '{1}'로 변해있습니다.", member.name, thing.name);
         StartCoroutine(LoadWave(clip));
+        source = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        progress.fillAmount = source.time / source.clip.length;
     }
 
     public IEnumerator LoadWave(string clip)

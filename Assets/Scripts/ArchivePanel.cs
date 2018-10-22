@@ -16,7 +16,7 @@ public class ArchivePanel : MonoBehaviour {
     public Text textBox;
     public Text productTitle;
     public Text title;
-    public Text introduce;
+    public Text introduce, guide;
     public Image image;
     public GameObject firstCell, cell, addCell,viewport;
     public List<Thing> thingHistories;
@@ -32,6 +32,7 @@ public class ArchivePanel : MonoBehaviour {
         image.sprite = member.Image;
         textBox.text = member.name;
         introduce.text = member.introduce;
+        guide.text = member.name + "를 변신시킨 다양한 마법메시지들 재미있으셨나요? 자, 어때요 준비 되셨나요?";
         productTitle.text = member.title;
         title.text = string.Format("지금까지 {0}에게 남겨진\n"
                                    + "마법 메시지를 재생 해볼까요 ? ", member.name);
