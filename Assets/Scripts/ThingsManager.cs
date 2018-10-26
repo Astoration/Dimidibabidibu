@@ -78,7 +78,7 @@ public class ThingsManager : MonoBehaviour {
         }
     }
 
-    public void OpenByName(string name){
+    public void OpenByName(string name,bool withAnim = true){
         GameObject item = null;
         foreach(var i in things){
             if(i.GetComponent<ThingObject>().member.name==name){
@@ -89,7 +89,7 @@ public class ThingsManager : MonoBehaviour {
         if (item == null) return;
         SpeechManager.selectedMember = name;
         selectedMember = item.GetComponent<ThingObject>().member;
-        StartCoroutine(ZoomItem(item));
+        StartCoroutine(ZoomItem(item,withAnim));
     }
 
     public void LockByName(string name){
@@ -113,7 +113,7 @@ public class ThingsManager : MonoBehaviour {
         CameraMovable.enable = true;
     }
 
-    IEnumerator ZoomItem(GameObject item){
+    IEnumerator ZoomItem(GameObject item,bool withAnim = true){
         CameraMovable.enable = false;
         var distance = Mathf.Abs(item.transform.position.x - Camera.main.transform.position.x);
         while(distance>0.01f){
@@ -123,8 +123,15 @@ public class ThingsManager : MonoBehaviour {
             distance = Mathf.Abs(item.transform.position.x - Camera.main.transform.position.x);
             yield return new WaitForEndOfFrame();
         }
-        item.GetComponent<Animator>().Play("BounceAnimation");
+        if (withAnim)
+        {
+            item.GetComponent<Animator>().enabled = true;
+            item.GetComponentInChildren<ItemSelector>().enabled = false;
+            item.GetComponent<Animator>().Play("BounceAnimation");
+        }
         yield return new WaitForSeconds(1.4f);
+        item.GetComponentInChildren<ItemSelector>().enabled = true;
+        item.GetComponent<Animator>().enabled = false;
         ArchivePage.SetActive(true);
         ArchivePage.GetComponent<ArchivePanel>().Init(item.GetComponent<ThingObject>().member);
         Camera.main.GetComponent<Camera>().orthographicSize = 5f;
@@ -168,5 +175,18 @@ public class ThingsManager : MonoBehaviour {
             if (thing.name == name) return thing;
         }
         return null;
+    }
+
+    public GameObject GetByMemberName(string name){
+        GameObject item = null;
+        foreach (var i in things)
+        {
+            if (i.GetComponent<ThingObject>().member.name == name)
+            {
+                item = i;
+            }
+        }
+        if (item == null) return null;
+        return item;
     }
 }

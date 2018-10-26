@@ -9,18 +9,44 @@ public class SpeechManager : MonoBehaviour {
     GCSpeechRecognition speechRecognition;
     public GameObject guide, result;
     public GameObject searchPanel;
+    public GameObject smokeEffect; 
     public Text resultText, finalText;
     public static string selectedMember;
     bool isCommandMode = false;
+    bool retry = false;
     public GameObject finalPanel, FailedResult;
 	// Use this for initialization
 	void Start () {
+        StartCoroutine(Setup());
         speechRecognition = GCSpeechRecognition.Instance;
         speechRecognition.RecognitionSuccessEvent += OnSuccess;
         speechRecognition.NetworkRequestFailedEvent += OnFailed;
         speechRecognition.RecordFailedEvent += OnFailed;
 	}
 
+    IEnumerator Setup()
+    {
+
+        findMicrophones();
+
+        yield return Application.RequestUserAuthorization(UserAuthorization.Microphone);
+        if (Application.HasUserAuthorization(UserAuthorization.Microphone))
+        {
+            Debug.Log("Microphone found");
+        }
+        else
+        {
+            Debug.Log("Microphone not found");
+        }
+    }
+
+    void findMicrophones()
+    {
+        foreach (var device in Microphone.devices)
+        {
+            Debug.Log("Name: " + device);
+        }
+    }
 
     private void OnFailed(string s,long n){
         OnFailed();
@@ -30,7 +56,8 @@ public class SpeechManager : MonoBehaviour {
     private void OnFailed()
     {
         if (isCommandMode){
-            finalPanel.GetComponentInChildren<Text>().text = "마음을 가다듬고 <color=\"#f8e71c\">다시한번</color> 시도해주세요!";
+            retry = true;
+            finalText.text = "마음을 가다듬고 <color=\"#f8e71c\">다시한번</color> 시도해주세요!";
             finalPanel.GetComponent<Animator>().Play("ReInitFinal");
             StartCommand();
         }
@@ -61,6 +88,22 @@ public class SpeechManager : MonoBehaviour {
         PlayerPrefs.SetString(selectedMember + "/thing", thing);
     }
 
+    IEnumerator FinalScene(){
+        var item = ThingsManager.instance.GetByMemberName(selectedMember);
+        item.GetComponent<Animator>().Play("BounceAnimation");
+        yield return new WaitForSeconds(1.5f);
+        var pos = item.transform.position;
+        pos.z = 1f;
+        Instantiate(smokeEffect, pos, Quaternion.identity);
+        yield return new WaitForSeconds(0.8f);
+        finalPanel.SetActive(false);
+        isCommandMode = false;
+        CameraMovable.enable = true;
+        ThingsManager.instance.ResetCamera();
+        SaveResult();
+        ThingsManager.instance.InitList();
+    }
+
     public void OnSuccess(RecognitionResponse response, long index){
         Debug.Log("3");
         if (response != null && response.results.Length > 0)
@@ -69,13 +112,10 @@ public class SpeechManager : MonoBehaviour {
             if(isCommandMode){
                 if(text.Contains("바비디"))
                 {
-                    finalPanel.SetActive(false);
-                    isCommandMode = false;
-                    CameraMovable.enable = true;
-                    ThingsManager.instance.ResetCamera();
-                    SaveResult();
-                    ThingsManager.instance.InitList();
+                    retry = false;
+                    StartCoroutine(FinalScene());
                 }else{
+                    retry = true;
                     finalPanel.GetComponentInChildren<Text>().text = "마음을 가다듬고 <color=\"#f8e71c\">다시한번</color> 시도해주세요!";
                     finalPanel.GetComponent<Animator>().Play("ReInitFinal");
                     StartCommand();
@@ -113,7 +153,10 @@ public class SpeechManager : MonoBehaviour {
         isCommandMode = true;
         ThingsManager.instance.LockByName(selectedMember);
         CameraMovable.enable = false;
-        finalText.text = selectedMember + "(을)를 조준하고 <color=\"#f8e71c\">디미디바비디부</color>를 외쳐주세요!";
+        if(retry)
+            finalText.text = "마음을 가다듬고 <color=\"#f8e71c\">다시한번</color> 시도해주세요!";
+        else
+            finalText.text = selectedMember + "(을)를 조준하고 <color=\"#f8e71c\">디미디바비디부</color>를 외쳐주세요!";
         OnStart();
     }
     public void OnStart(){

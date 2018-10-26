@@ -21,6 +21,11 @@ public class SelectManager : MonoBehaviour {
             return _instance;
         }
     }
+
+    public float selectedTime = 0f;
+    public bool played = false;
+
+
     private void Awake()
     {
         Debug.Log(ThingsManager.list);
@@ -49,7 +54,8 @@ public class SelectManager : MonoBehaviour {
         current = GetComponent<MagneticScrollRect>().CurrentSelectedIndex;
         preObject = currentObject;
         currentObject = indexObjects[current].GetComponent<ThingObject>().image.rectTransform;
-        video.Play();
+        selectedTime = 0f;
+        played = false;
     }
 
     // Update is called once per frame
@@ -60,6 +66,12 @@ public class SelectManager : MonoBehaviour {
         currentObject.localScale = Vector3.Lerp(currentObject.localScale, Vector3.one * 0.7477477f * 1.5f, 0.1f);
         if (preObject)
             preObject.localScale = Vector3.Lerp(preObject.localScale, Vector3.one * 0.7477477f, 0.1f);
-
+        if(!played){
+            selectedTime += Time.deltaTime;
+            if(5f<selectedTime){
+                video.Play();
+                played = true;
+            }
+        }
     }
 }

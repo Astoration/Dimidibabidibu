@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+
 public class CellObject : MonoBehaviour {
     public Image image;
     public Text title;
@@ -18,11 +20,17 @@ public class CellObject : MonoBehaviour {
         image.GetComponent<SpriteAnimation>().size = 900;
         title.text = string.Format("{0}는 '{1}'로 변해있습니다.", member.name, thing.name);
         StartCoroutine(LoadWave(clip));
+        var dataString = clip.Replace(".wav", "");
+        var date = DateTime.Parse(dataString);
+        var timeDiff =  DateTime.Now.Ticks - date.Ticks;
+        Debug.Log((timeDiff / (1000* 10000)) + "초 전");
+        Debug.Log(date);
         source = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
+        if (source.clip == null) return;
         progress.fillAmount = source.time / source.clip.length;
     }
 
