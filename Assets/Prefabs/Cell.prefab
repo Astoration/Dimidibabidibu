@@ -362,6 +362,7 @@ MonoBehaviour:
   image: {fileID: 114271541018940546}
   title: {fileID: 114172317604262566}
   progress: {fileID: 114367639363739678}
+  timeStamp: {fileID: 114562922600532912}
 --- !u!114 &114025817105155268
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,6 +8,7 @@ public class CellObject : MonoBehaviour {
     public Image image;
     public Text title;
     public Image progress;
+    public Text timeStamp;
     AudioSource source;
 
     public void Record(){
@@ -23,8 +24,24 @@ public class CellObject : MonoBehaviour {
         var dataString = clip.Replace(".wav", "");
         var date = DateTime.Parse(dataString);
         var timeDiff =  DateTime.Now.Ticks - date.Ticks;
-        Debug.Log((timeDiff / (1000* 10000)) + "초 전");
-        Debug.Log(date);
+        var minutes = timeDiff / (60 * 1000 * 10000);
+        var hour = timeDiff / (60 * 1000 * 10000) / 60;
+        var day = timeDiff / (60 * 1000 * 10000) / 60 / 24;
+        string result = "";
+        if(0<day){
+            if(day==1){
+                result = "어제";
+            }else{
+                result = "그저께";
+            }
+        }else if(0<hour){
+            result = string.Format("{0}시간 전", hour);
+        }else if(1<minutes){
+            result = string.Format("{0}분 전", minutes);
+        }else{
+            result = "지금";
+        }
+        timeStamp.text = result;
         source = GetComponent<AudioSource>();
     }
 
