@@ -10,6 +10,7 @@ public class CellObject : MonoBehaviour {
     public Image progress;
     public Text timeStamp;
     AudioSource source;
+    public Text currentTime, afterTime;
 
     public void Record(){
         ArchivePanel.instance.OnRecord();
@@ -49,6 +50,8 @@ public class CellObject : MonoBehaviour {
     {
         if (source.clip == null) return;
         progress.fillAmount = source.time / source.clip.length;
+        currentTime.text = string.Format("00:{0}", ((int)Mathf.Floor(source.time)).ToString("D1"));
+        afterTime.text = string.Format("00:{0}",((int)Mathf.Floor(source.clip.length-source.time)).ToString("D1"));
     }
 
     public IEnumerator LoadWave(string clip)

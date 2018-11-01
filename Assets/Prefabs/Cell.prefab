@@ -363,6 +363,8 @@ MonoBehaviour:
   title: {fileID: 114172317604262566}
   progress: {fileID: 114367639363739678}
   timeStamp: {fileID: 114562922600532912}
+  currentTime: {fileID: 114070553119897828}
+  afterTime: {fileID: 114547730323456400}
 --- !u!114 &114025817105155268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -732,7 +734,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loopFrame: 1
   frame: 0
-  thing: 0
   size: 200
   duration: 3
   isThing: 1
