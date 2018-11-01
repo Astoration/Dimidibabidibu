@@ -55,7 +55,11 @@ public class SpeechManager : MonoBehaviour {
 
     private void OnFailed()
     {
-        if (isCommandMode){
+        if(Input.GetKey(KeyCode.Z)){
+            retry = false;
+            StartCoroutine(FinalScene());
+        }
+        else if (isCommandMode){
             retry = true;
             finalText.text = "마음을 가다듬고 <color=\"#f8e71c\">다시한번</color> 시도해주세요!";
             finalPanel.GetComponent<Animator>().Play("ReInitFinal");
@@ -110,7 +114,7 @@ public class SpeechManager : MonoBehaviour {
         {
             var text = response.results[0].alternatives[0].transcript;
             if(isCommandMode){
-                if(text.Contains("바비디"))
+                if(text.Contains("바비디")||Input.GetKey(KeyCode.Z))
                 {
                     retry = false;
                     StartCoroutine(FinalScene());
