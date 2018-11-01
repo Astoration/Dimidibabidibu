@@ -22,7 +22,7 @@ public class ThingObject : MonoBehaviour {
     {
         this.thing = thing;
         this.member = member;
-        image.GetComponent<SpriteAnimation>().thing = thing.image;
+        image.GetComponent<SpriteAnimation>().Thing = thing.image;
         objectName.text = useCategory?thing.category:thing.name + "으로 변한 <color=\"#f8e71c\">" + member.name + "</color>" ;
     }
 
@@ -35,7 +35,7 @@ public class ThingObject : MonoBehaviour {
         }
         else
         {
-            image.GetComponent<SpriteAnimation>().thing = thing.image;
+            image.GetComponent<SpriteAnimation>().Thing = thing.image;
         }
         objectName.text = useCategory ? thing.category : thing.name;
     }

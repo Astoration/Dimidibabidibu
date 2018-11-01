@@ -17,7 +17,7 @@ public class CellObject : MonoBehaviour {
 
     public void Init(Member member,Thing thing, string clip)
     {
-        image.GetComponent<SpriteAnimation>().thing = thing.image;
+        image.GetComponent<SpriteAnimation>().Thing = thing.image;
         image.GetComponent<SpriteAnimation>().size = 900;
         title.text = string.Format("{0}는 '{1}'로 변해있습니다.", member.name, thing.name);
         StartCoroutine(LoadWave(clip));

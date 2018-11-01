@@ -8,7 +8,7 @@ public class ShowSelected : MonoBehaviour {
     private void OnEnable()
     {
         GetComponent<SpriteAnimation>().size = 900;
-        GetComponent<SpriteAnimation>().thing = ThingsManager.list[SelectManager.instance.current].image;
+        GetComponent<SpriteAnimation>().Thing = ThingsManager.list[SelectManager.instance.current].image;
         RecordManager.instance.stringSource = ThingsManager.list[SelectManager.instance.current].caption;
         storyIntroduce.text = ThingsManager.list[SelectManager.instance.current].description.Replace(@"{0}",ThingsManager.instance.selectedMember.name);
     }
