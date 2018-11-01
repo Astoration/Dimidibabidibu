@@ -12281,6 +12281,7 @@ GameObject:
   - component: {fileID: 1804148775}
   - component: {fileID: 1804148774}
   - component: {fileID: 1804148773}
+  - component: {fileID: 1804148776}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -12413,7 +12414,7 @@ MonoBehaviour:
   elementPivotCancel: []
   viewportPivotCancel: {x: 208.5, y: 0}
   m_swipeDetect: {fileID: 1804148774}
-  m_autoArranging: 0
+  m_autoArranging: 1
   m_invertOrder: 0
   m_infiniteScrolling: 0
   m_useMargin: 0
@@ -12436,6 +12437,17 @@ MonoBehaviour:
   indexTable: {fileID: 0}
   useButtons: 0
   useIndexTable: 0
+--- !u!114 &1804148776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1804148771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac1f82fb89a6c545b11dce86f05c975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &1804148778
 CanvasRenderer:
   m_ObjectHideFlags: 0
