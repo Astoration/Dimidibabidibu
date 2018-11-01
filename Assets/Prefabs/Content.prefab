@@ -462,7 +462,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.2
+    m_LineSpacing: 1.4
   m_Text: "\uC5BC\uC74C\uC774 \uACE7 \uACE0\uB3D9\uC744 \uBB34\uC5C7\uC774 \uBD88\uB7EC
     \uB4E3\uB294\uB2E4. \uC7A5\uC2DD\uD558\uB294 \uB418\uB824\uB2C8\uC640, \uC774\uC0C1\uC740
     \uC2F6\uC774 \uB178\uB798\uD558\uBA70 \uC704\uD558\uC5EC\uC11C. \uC8FC\uBA70,
@@ -755,7 +755,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -7.7}
+  m_AnchoredPosition: {x: 0, y: -10.43}
   m_SizeDelta: {x: 472, y: 137.8}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224987638309142146
