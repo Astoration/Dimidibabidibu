@@ -18,7 +18,7 @@ public class RecordManager : MonoBehaviour {
     public string stringSource;
     public AudioSource source;
     private bool isPlaying;
-
+    public AudioSource bgmSource;
     // Use this for initialization
     void Start () {
         source = GetComponent<AudioSource>();
@@ -33,7 +33,26 @@ public class RecordManager : MonoBehaviour {
         }
     }
 
+    IEnumerator FadeOut()
+    {
+        for (int i = 0; i < 90; i++)
+        {
+            bgmSource.volume = Mathf.Lerp(bgmSource.volume, 0.001f, Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    IEnumerator FadeIn(){
+
+        for (int i = 0; i < 90; i++)
+        {
+            bgmSource.volume = Mathf.Lerp(bgmSource.volume, 0.1f, Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     public void Record(){
+        StartCoroutine(FadeOut());
         isPlaying = true;
         source.clip = Microphone.Start(null, false, 15, 16600);
         source.volume = 0;
@@ -41,6 +60,8 @@ public class RecordManager : MonoBehaviour {
     }
 
     public void Stop(){
+        StartCoroutine(FadeIn());
+
         isPlaying = false;
         Microphone.End(null);
         source.Stop();
