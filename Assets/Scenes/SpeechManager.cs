@@ -119,7 +119,19 @@ public class SpeechManager : MonoBehaviour {
         {
             var text = response.results[0].alternatives[0].transcript;
             if(isCommandMode){
-                if(text.Contains("바비디")||Input.GetKey(KeyCode.Z))
+                var successCommand = false;
+                var values = "바비디/바비디/바비 d/바비 디/밥 ed/밥이 d/밥 이디/바비/바 bd/바디/밥이 디".Split('/');
+                foreach (var command in values)
+                {
+                    var target = command.Trim().Replace(@" ", "");
+                    Debug.Log(target + "@" + text + "@" + text.Replace(@" ", "").Contains(target));
+                    if (text.Replace(@" ", "").Contains(target))
+                    {
+                        successCommand = true;
+                        break;
+                    }
+                }
+                if (successCommand||Input.GetKey(KeyCode.Z))
                 {
                     retry = false;
                     StartCoroutine(FinalScene());
@@ -134,9 +146,10 @@ public class SpeechManager : MonoBehaviour {
             var contain = false;
             foreach(var member in ThingsManager.members){
                 var values = member.nameValues.Split('/');
-                foreach(var name in values){
-                    var targetName = name.Trim().Replace(@" ", "");
-                    if (targetName.Contains(text))
+                foreach(var searchName in values){
+                    var targetName = searchName.Trim().Replace(@" ", "");
+                    Debug.Log(targetName + "@" + text + "@" + text.Replace(@" ", "").Contains(targetName));
+                    if (text.Replace(@" ","").Contains(targetName))
                     {
                         contain = true;
                         text = member.name;
