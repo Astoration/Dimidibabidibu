@@ -98,6 +98,7 @@ public class CellObject : MonoBehaviour {
 
     public void OnExit()
     {
+        if (!gameObject.activeSelf) return;
         StartCoroutine(FadeIn());
         GetComponent<AudioSource>().Stop();
     }

@@ -37,6 +37,7 @@ public class SpeechManager : MonoBehaviour {
         else
         {
             Debug.Log("Microphone not found");
+            Application.Quit();
         }
     }
 
