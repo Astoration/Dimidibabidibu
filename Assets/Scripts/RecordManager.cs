@@ -61,7 +61,6 @@ public class RecordManager : MonoBehaviour {
 
     public void Stop(){
         StartCoroutine(FadeIn());
-
         isPlaying = false;
         Microphone.End(null);
         source.Stop();
@@ -69,7 +68,15 @@ public class RecordManager : MonoBehaviour {
 
     public void Play(){
         if (isPlaying) return;
+        StartCoroutine(FadeOut());
         source.volume = 1;
+        Invoke("Reset", 15f);
         source.Play();
+    }
+
+    public void Reset()
+    {
+        StartCoroutine(FadeIn());
+
     }
 }

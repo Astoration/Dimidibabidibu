@@ -59,6 +59,8 @@ public class ThingsManager : MonoBehaviour {
 
     public void Awake()
     {
+        members.Clear();
+        list.Clear();
         var result = JsonMapper.ToObject<List<Thing>>(thingData.text);
         var memberResult = JsonMapper.ToObject<List<Member>>(memberData.text);
         members.AddRange(memberResult);

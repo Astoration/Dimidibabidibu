@@ -11,13 +11,33 @@ public class CellObject : MonoBehaviour {
     public Text timeStamp;
     AudioSource source;
     public Text currentTime, afterTime;
-
+    AudioSource bgmSource;
     public void Record(){
         ArchivePanel.instance.OnRecord();
     }
 
+    IEnumerator FadeOut()
+    {
+        for (int i = 0; i < 90; i++)
+        {
+            bgmSource.volume = Mathf.Lerp(bgmSource.volume, 0.001f, Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    IEnumerator FadeIn()
+    {
+
+        for (int i = 0; i < 90; i++)
+        {
+            bgmSource.volume = Mathf.Lerp(bgmSource.volume, 0.1f, Time.deltaTime);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     public void Init(Member member,Thing thing, string clip)
     {
+        bgmSource = Camera.main.gameObject.GetComponent<AudioSource>();
         image.GetComponent<SpriteAnimation>().Thing = thing.image;
         image.GetComponent<SpriteAnimation>().size = 900;
         title.text = string.Format("{0}는 '{1}'로 변해있습니다.", member.name, thing.name);
@@ -66,11 +86,15 @@ public class CellObject : MonoBehaviour {
 
     public void OnEnter()
     {
+        if (source.isPlaying) return;
+        StartCoroutine(FadeOut());
+        Invoke("OnExit", 15f);
         GetComponent<AudioSource>().Play(); 
     }
 
     public void OnExit()
     {
+        StartCoroutine(FadeIn());
         GetComponent<AudioSource>().Stop();
     }
 }
