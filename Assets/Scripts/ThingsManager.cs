@@ -130,8 +130,8 @@ public class ThingsManager : MonoBehaviour {
             item.GetComponent<Animator>().enabled = true;
             item.GetComponentInChildren<ItemSelector>().enabled = false;
             item.GetComponent<Animator>().Play("BounceAnimation");
+            yield return new WaitForSeconds(1.4f);
         }
-        yield return new WaitForSeconds(1.4f);
         item.GetComponentInChildren<ItemSelector>().enabled = true;
         item.GetComponent<Animator>().enabled = false;
         ArchivePage.SetActive(true);
