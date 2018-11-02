@@ -133,7 +133,16 @@ public class SpeechManager : MonoBehaviour {
             }
             var contain = false;
             foreach(var member in ThingsManager.members){
-                if (member.name == text) contain = true;
+                var values = member.nameValues.Split('/');
+                foreach(var name in values){
+                    var targetName = name.Trim().Replace(@" ", "");
+                    if (targetName.Contains(text))
+                    {
+                        contain = true;
+                        text = member.name;
+                        break;
+                    }
+                }
             }
             if(!contain){
                 OnFailed();
