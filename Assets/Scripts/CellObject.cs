@@ -12,6 +12,8 @@ public class CellObject : MonoBehaviour {
     AudioSource source;
     public Text currentTime, afterTime;
     AudioSource bgmSource;
+    public Text description;
+
     public void Record(){
         ArchivePanel.instance.OnRecord();
     }
@@ -41,6 +43,8 @@ public class CellObject : MonoBehaviour {
         image.GetComponent<SpriteAnimation>().Thing = thing.image;
         image.GetComponent<SpriteAnimation>().size = 900;
         title.text = string.Format("{0}는 '{1}'로 변해있습니다.", member.name, thing.name);
+        description.text = string.Format("{0}를 변하게한\n"
+                                            +"마법 메시지 들어보기", member.name);
         StartCoroutine(LoadWave(clip));
         var dataString = clip.Replace(".wav", "");
         var date = DateTime.Parse(dataString);
