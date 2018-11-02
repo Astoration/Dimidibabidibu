@@ -2187,7 +2187,7 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.25490198, g: 0.19607843, b: 0.4745098, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -7710,6 +7710,7 @@ GameObject:
   - component: {fileID: 704779089}
   - component: {fileID: 704779088}
   - component: {fileID: 704779091}
+  - component: {fileID: 704779092}
   m_Layer: 5
   m_Name: Left
   m_TagString: Untagged
@@ -7773,6 +7774,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 704779092}
+          m_MethodName: EnableTick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 1
@@ -7781,6 +7793,17 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 704779091}
           m_MethodName: OnTouchExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 704779092}
+          m_MethodName: ResetTime
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7844,6 +7867,22 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   sprite: {fileID: 1270410142}
+--- !u!114 &704779092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 704779086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7ce8b28589c48b2baef003b265fb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scroll: {fileID: 1804148775}
+  time: 0
+  tickOn: 0
+  isLeft: 1
+  enable: 0
 --- !u!1 &708496840
 GameObject:
   m_ObjectHideFlags: 0
@@ -12359,7 +12398,7 @@ MonoBehaviour:
   useIndexTable: 0
 --- !u!114 &1804148776
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1804148771}
@@ -12610,6 +12649,7 @@ GameObject:
   - component: {fileID: 1900948716}
   - component: {fileID: 1900948715}
   - component: {fileID: 1900948718}
+  - component: {fileID: 1900948719}
   m_Layer: 5
   m_Name: Right
   m_TagString: Untagged
@@ -12673,6 +12713,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1900948719}
+          m_MethodName: EnableTick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 1
@@ -12681,6 +12732,17 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1900948718}
           m_MethodName: OnTouchExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1900948719}
+          m_MethodName: ResetTime
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -12744,6 +12806,22 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   sprite: {fileID: 1199064493}
+--- !u!114 &1900948719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1900948713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7ce8b28589c48b2baef003b265fb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scroll: {fileID: 1804148775}
+  time: 0
+  tickOn: 0
+  isLeft: 0
+  enable: 0
 --- !u!1 &1902628052
 GameObject:
   m_ObjectHideFlags: 0
