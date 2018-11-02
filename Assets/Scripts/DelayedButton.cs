@@ -24,6 +24,7 @@ public class DelayedButton : MonoBehaviour {
         }
         if(delay<time){
             time = 0f;
+            enabled = false;
             action.Invoke();
         }
     }

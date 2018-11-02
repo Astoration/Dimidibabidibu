@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMovable : MonoBehaviour {
     public static bool enable = true;
@@ -18,6 +19,9 @@ public class CameraMovable : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(Input.GetKeyUp(KeyCode.Q)){
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
         if (!enable) return;
         var distance = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
         if (0.95f < distance)
