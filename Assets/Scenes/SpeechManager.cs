@@ -99,7 +99,11 @@ public class SpeechManager : MonoBehaviour {
         var pos = item.transform.position;
         pos.z = 1f;
         Instantiate(smokeEffect, pos, Quaternion.identity);
-        yield return new WaitForSeconds(0.8f);
+        var prev = item.GetComponentInChildren<ThingObject>().thing.name;
+        item.GetComponentInChildren<SpriteAnimation>().Thing = ThingsManager.list[SelectManager.instance.current].image;
+        finalText.text = string.Format("좋아요! <color=\"#f8e71c\">{0}</color>(을)를\n"
+                                       + "<color=\"#f8e71c\">{1}</color>에서 <color=\"#f8e71c\">{2}</color>로 변신시켰습니다!", selectedMember,prev, ThingsManager.list[SelectManager.instance.current].name);
+        yield return new WaitForSeconds(2.5f);
         finalPanel.SetActive(false);
         isCommandMode = false;
         CameraMovable.enable = true;
