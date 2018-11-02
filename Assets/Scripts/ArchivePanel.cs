@@ -39,9 +39,10 @@ public class ArchivePanel : MonoBehaviour {
         var history = PlayerPrefs.GetString(member.name + "/thing", "");
         var histories = history.Split('#');
         Thing selectedThing = null;
-        for (int i = 0; i < viewport.transform.childCount; i++) Destroy(viewport.transform.GetChild(0).gameObject);
+        for (int i = 0; i < viewport.transform.childCount; i++) DestroyImmediate(viewport.transform.GetChild(0).gameObject);
         if (histories != null && 0 < histories.Length && histories[0] != "")
         {
+            thingHistories.Clear();
             foreach (var item in histories)
             {
 
@@ -53,6 +54,7 @@ public class ArchivePanel : MonoBehaviour {
         var soundHistories = soundHistory.Split('#');
         if (soundHistories != null && 0 < soundHistories.Length && soundHistories[0] != "")
         {
+            audioHistories.Clear();
             foreach (var item in soundHistories)
             {
                 audioHistories.Add(item);

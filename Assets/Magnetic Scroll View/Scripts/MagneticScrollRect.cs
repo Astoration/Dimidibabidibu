@@ -717,6 +717,14 @@ namespace MagneticScrollView
         {
             if (isArranging == false)
             {
+                int count = ChildCount(viewport);
+                if (elements == null || elements.Length != count)
+                    elements = new RectTransform[count];
+
+                for (int i = 0; i < elements.Length; i++)
+                {
+                    elements[i] = viewport.transform.GetChild(i).GetComponent<RectTransform>();
+                }
                 // Debug.Log ("Arranging Elements");
                 isArranging = true;
 
