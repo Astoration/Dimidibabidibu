@@ -39,10 +39,11 @@ public class ArchivePanel : MonoBehaviour {
         var history = PlayerPrefs.GetString(member.name + "/thing", "");
         var histories = history.Split('#');
         Thing selectedThing = null;
-        for (int i = 0; i < viewport.transform.childCount; i++) DestroyImmediate(viewport.transform.GetChild(0).gameObject);
+        var count = viewport.transform.childCount;
+        for (int i = 0; i < count ; i++) DestroyImmediate(viewport.transform.GetChild(0).gameObject);
+        thingHistories = new List<Thing>();
         if (histories != null && 0 < histories.Length && histories[0] != "")
         {
-            thingHistories.Clear();
             foreach (var item in histories)
             {
 
@@ -52,9 +53,9 @@ public class ArchivePanel : MonoBehaviour {
         }
         var soundHistory = PlayerPrefs.GetString(member.name + "/sound", "");
         var soundHistories = soundHistory.Split('#');
+        audioHistories = new List<string>();
         if (soundHistories != null && 0 < soundHistories.Length && soundHistories[0] != "")
         {
-            audioHistories.Clear();
             foreach (var item in soundHistories)
             {
                 audioHistories.Add(item);
@@ -62,7 +63,9 @@ public class ArchivePanel : MonoBehaviour {
         }
         int index = 0;
         foreach(Thing thing in thingHistories){
-            if(index == 0){
+            if (soundHistories == null || 0 == soundHistories.Length || soundHistories[0] == "")
+                break;
+            if (index == 0){
                 Instantiate(firstCell, viewport.transform).GetComponent<CellObject>().Init(member,thing,audioHistories[index]);
                 index += 1;
             }else{
@@ -70,6 +73,8 @@ public class ArchivePanel : MonoBehaviour {
                 index += 1;
             }
         }
+        thingHistories.Clear();
+        audioHistories.Clear();
         viewport.GetComponent<MagneticScrollView.MagneticScrollRect>().ArrangeElements();
     }
 }
